@@ -146,5 +146,5 @@ class PackageConan(ConanFile):
                 self.cpp_info.components[lib].system_libs.extend(["m", "dl"])
 
     def system_requirements(self):
-        if self.options.with_openmp and not self.settings.compiler == "gcc":
+        if self.options.with_openmp and self.settings.compiler == "gcc":
             Apt(self).install(["libgomp1"])
