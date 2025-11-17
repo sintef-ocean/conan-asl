@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.15)
+project(test_package LANGUAGES C CXX)
+
+find_package(ampl-asl CONFIG REQUIRED COMPONENTS asl asl2)
+#find_package(ampl-asl CONFIG COMPONENTS asl-mt asl2-mt asl-dynrt asl2-dynrt)
+
+set(asl_components asl asl-mt asl-dynrt)
+set(asl2_components asl2 asl2-mt asl2-dynrt)
+
+foreach(element IN LISTS asl_components)
+  if(TARGET ${element})
+    add_executable(${PROJECT_NAME}_${element} test_package.cpp)
+    target_link_libraries(${PROJECT_NAME}_${element} PRIVATE ${element})
+  else()
+    message("Did not find target: ${element}")
+  endif()
+endforeach()
+
+foreach(element IN LISTS asl2_components)
+  if(TARGET ${element})
+    add_executable(${PROJECT_NAME}_${element} test_package2.cpp)
+    target_link_libraries(${PROJECT_NAME}_${element} PRIVATE ${element})
+  else()
+    message("Did not find target: ${element}")
+  endif()
+endforeach()
