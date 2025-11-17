@@ -1,4 +1,5 @@
 [![Linux GCC](https://github.com/sintef-ocean/conan-asl/workflows/Linux%20GCC/badge.svg)](https://github.com/sintef-ocean/conan-asl/actions?query=workflow%3A"Linux+GCC")
+[![Windows MSVC](https://github.com/sintef-ocean/conan-asl/workflows/Windows%20MSVC/badge.svg)](https://github.com/sintef-ocean/conan-asl/actions?query=workflow%3A"Windows+MSVC")
 
 [Conan.io](https://conan.io) recipe for [AMPL ASL](https://github.com/ampl/asl).
 
