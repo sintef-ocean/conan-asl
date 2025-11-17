@@ -56,9 +56,13 @@ class PackageConan(ConanFile):
         apply_conandata_patches(self)
 
     def validate(self):
-        if self.options.shared and self.options.with_cpp:
-            raise ConanInvalidConfiguration(
-                "asl cannot be built with shared when `with_cpp=True`")
+        if self.options.shared:
+            if self.options.with_cpp:
+                raise ConanInvalidConfiguration(
+                    "asl cannot be built with shared when `with_cpp=True`")
+            if self.settings.os == "Windows":
+                raise ConanInvalidConfiguration(
+                    "asl with `shared=True` not supported on Windows")
 
     def generate(self):
         tc = CMakeToolchain(self)
